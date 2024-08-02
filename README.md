@@ -1,3 +1,25 @@
+Forked from [https://github.com/witPranav/react-native-android-wake-screen]([url](https://github.com/witPranav/react-native-android-wake-screen))
+
+Note: purpose is simply to patch the native component that acquires the lock to wake the screen and make it release the lock again right after to avoid a warning from power management:
+
+```
+onEndOfErrorDumpThread: data_app_wtf Process: com.YOURAPP
+Flags: 0x38883e44
+Package: com.YOURAPP v1 (1.0)
+Foreground: Yes
+Subject: PowerManager
+Build: Lenovo/LenovoTB-7304I/TB-7304I:7.0/NRD90M/TB-7304I_S000049_180828_ROW:user/release-keys
+
+android.util.Log$TerribleFailure: WakeLock finalized while still held: yourApp:tag
+	at android.util.Log.wtf(Log.java:295)
+	at android.util.Log.wtf(Log.java:260)
+	at android.os.PowerManager$WakeLock.finalize(PowerManager.java:1233)
+	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:223)
+	at java.lang.Daemons$FinalizerDaemon.run(Daemons.java:210)
+	at java.lang.Thread.run(Thread.java:761)
+ 2201
+```
+
 # react-native-android-wake-screen
 
 ## Getting started
@@ -32,3 +54,5 @@ const MyHeadlessFunction = async () => {
   AndroidWakeScreen.wakeScreen();
 };
 ```
+
+
